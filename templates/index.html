@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+</head>
+<body>
+    <h1>User Data</h1>
+        <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>            
+        </thead>
+        <tbody>
+            {% for row in data%}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.email }}</td>
+                <td>
+                    <form action="/update/{{ row.id }}" method="post">
+                        <button type="submit">Update</button>
+                    </form>
+                    <form action="/delete/{{ row.id }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <br>
+    <h1>Add New User</h1>
+    <form action="/add" method="post">
+        <label for="name">Username:</label>
+        <input type="text" name="name" placeholder="Enter name"><br>
+        <label for="email">Email:</label>
+        <input type="email" name="email" placeholder="Enter email"><br>
+        <input type="submit" value="Add User">
+    </form>
+</body>
+</html>
