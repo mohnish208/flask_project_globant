@@ -1,5 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask import redirect, render_template, request, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 from init import app,db

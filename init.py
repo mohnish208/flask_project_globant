@@ -1,7 +1,5 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField
 from urllib.parse import quote_plus
 
 app = Flask(__name__)
