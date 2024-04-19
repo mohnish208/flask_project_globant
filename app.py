@@ -2,21 +2,8 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
-from urllib.parse import quote_plus
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = 'secretkey'
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:%s@localhost/firstdb'%quote_plus("April@123")
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(50))
-    email = db.Column(db.String(50), unique = True)
+from init import app,db
+from models import User
 
 class UpdateForm(FlaskForm):
     name = StringField("Name:")
@@ -63,5 +50,3 @@ def delete(id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
